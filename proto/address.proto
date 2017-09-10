@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service Address {
+    rpc setIp (AddressRequest) returns (AddressReply) {
+    }
+}
+
+message AddressRequest {
+    string ip = 1;
+
+}
+
+message AddressReply {
+    bool reply = 1;
+}
+
