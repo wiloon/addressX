@@ -3,7 +3,7 @@ package main
 import (
 	"google.golang.org/grpc"
 	"log"
-	pb "wiloon.com/ipx/proto"
+	pb "wiloon.com/addressX/proto"
 	"context"
 	"os"
 	"net/http"

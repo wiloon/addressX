@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 	"google.golang.org/grpc"
-	pb "wiloon.com/ipx/proto"
+	pb "wiloon.com/addressX/proto"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc/reflection"
 )
