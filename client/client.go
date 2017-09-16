@@ -10,39 +10,46 @@ import (
 	"io/ioutil"
 	"time"
 	"sync"
+	"github.com/wiloon/app-config"
 )
 
-const address = "localhost:7000"
+const (
+	duration = time.Second * 5
+	url      = "http://members.3322.org/dyndns/getip"
+)
+
+var server_address = config.GetStringWithDefaultValue("server_address", "localhost:7000")
 
 func main() {
-	ticker := time.NewTicker(time.Second * 3)
+	server_address = "localhost:7000"
+	ticker := time.NewTicker(duration)
 	var wg sync.WaitGroup
 	wg.Add(1)
 
-	go func() {
-		for _ = range ticker.C {
+	for range ticker.C {
 
-			log.Printf("ticked at %v", time.Now())
-			ip := getIp()
-			send(ip)
-		}
-
-		wg.Done()
-	}()
+		log.Printf("ticked at %v", time.Now())
+		ip := getIp()
+		send(ip)
+	}
 
 	wg.Wait()
-
 }
 
 func send(ip string) {
 	log.Println("sending ip:" + ip)
 
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
+	conn, err := grpc.Dial(server_address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("failed to connect: %v", err)
 	}
 
-	defer conn.Close()
+	defer func() {
+		conn.Close()
+		if r := recover(); r != nil {
+			log.Println("error:", r)
+		}
+	}()
 
 	c := pb.NewAddressClient(conn)
 
@@ -51,8 +58,8 @@ func send(ip string) {
 	log.Printf("success: %v", reply.Reply)
 
 }
+
 func getIp() string {
-	url := "http://members.3322.org/dyndns/getip"
 
 	resp, err := http.Get(url)
 	if err != nil {

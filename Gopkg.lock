@@ -3,21 +3,33 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/go-akka/configuration"
+  packages = [".","hocon"]
+  revision = "755180b9a146a94d76051113e9624bdc8327c499"
+
+[[projects]]
+  branch = "master"
   name = "github.com/golang/protobuf"
   packages = ["proto","protoc-gen-go/descriptor","ptypes","ptypes/any","ptypes/duration","ptypes/timestamp"]
-  revision = "17ce1425424ab154092bbb43af630bd647f3bb0d"
+  revision = "11b8df160996e00fd4b55cbaafb3d84ec6d50fa8"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/wiloon/app-config"
+  packages = ["."]
+  revision = "667990eb9f990def8ac7b1a42123b15883eae608"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
   packages = ["context","http2","http2/hpack","idna","internal/timeseries","lex/httplex","trace"]
-  revision = "66aacef3dd8a676686c7ae3716979581e8b03c47"
+  revision = "8351a756f30f1297fe94bbf4b767ec589c6ea6d0"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/text"
-  packages = ["internal/gen","internal/triegen","internal/ucd","secure/bidirule","transform","unicode/bidi","unicode/cldr","unicode/norm","unicode/rangetable"]
-  revision = "bd91bbf73e9a4a801adbfb97133c992678533126"
+  packages = ["collate","collate/build","internal/colltab","internal/gen","internal/tag","internal/triegen","internal/ucd","language","secure/bidirule","transform","unicode/bidi","unicode/cldr","unicode/norm","unicode/rangetable"]
+  revision = "1cbadb444a806fd9430d14ad08967ed91da4fa0a"
 
 [[projects]]
   branch = "master"
@@ -34,6 +46,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "844a5ea8e6e0e91d44d7c87ee35075a47adb39abf4eb4b5b159e6314220fad2e"
+  inputs-digest = "90a899bf7f9d1bd2d90a2212a3b3b81960aa7e1cd810f0d039b1c4ad025baee5"
   solver-name = "gps-cdcl"
   solver-version = 1
